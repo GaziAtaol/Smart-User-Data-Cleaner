@@ -1,0 +1,52 @@
+{
+  "_comment": "Smart User Data Cleaner — Example Rule Configuration",
+  "_version": "1.0",
+  "rules": [
+    {
+      "id": "rule_001",
+      "description": "Age must be between 0 and 120",
+      "field": "age",
+      "operator": "between",
+      "value": [0, 120],
+      "action": "flag",
+      "severity": "warning"
+    },
+    {
+      "id": "rule_002",
+      "description": "Email must contain @",
+      "field": "email",
+      "operator": "regex",
+      "value": "^[^@]+@[^@]+\\.[^@]+$",
+      "action": "flag",
+      "severity": "error"
+    },
+    {
+      "id": "rule_003",
+      "description": "Salary must not be negative",
+      "field": "salary",
+      "operator": "gte",
+      "value": 0,
+      "action": "drop",
+      "severity": "critical"
+    },
+    {
+      "id": "rule_004",
+      "description": "Country code must be 2 uppercase letters",
+      "field": "country_code",
+      "operator": "regex",
+      "value": "^[A-Z]{2}$",
+      "action": "fill",
+      "fill_value": "XX",
+      "severity": "warning"
+    },
+    {
+      "id": "rule_005",
+      "description": "Status must be one of active, inactive, pending",
+      "field": "status",
+      "operator": "isin",
+      "value": ["active", "inactive", "pending"],
+      "action": "flag",
+      "severity": "warning"
+    }
+  ]
+}
